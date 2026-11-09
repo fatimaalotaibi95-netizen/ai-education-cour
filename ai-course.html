@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#172554">
+<title>رحلة الذكاء | الذكاء الاصطناعي في التعليم</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Readex+Pro:wght@400;600;700&display=swap');
+:root{--navy:#172554;--blue:#3157c8;--cyan:#39c6c8;--violet:#8267dc;--gold:#f4bd58;--pink:#f28aa8;--mint:#75d6b0;--ink:#202b48;--muted:#6b7590;--paper:#f5f7ff;--white:#fff;--line:#e6eaf5;--shadow:0 18px 55px #1b2b5b18}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Almarai",Tahoma,sans-serif;line-height:1.8}button,input,select{font:inherit}button{cursor:pointer;border:0}
+.topbar{position:sticky;top:0;z-index:20;background:#ffffffed;backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px 5vw;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy)}.brandmark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center;color:white;font-size:22px;box-shadow:0 7px 18px #3157c844}
+.navlinks{display:flex;gap:8px;flex-wrap:wrap}.navlinks button{background:transparent;color:var(--muted);padding:8px 13px;border-radius:12px;font-size:13px}.navlinks button:hover,.navlinks button.active{background:#eef1ff;color:var(--blue)}
+.hero{position:relative;overflow:hidden;padding:65px 6vw 54px;background:radial-gradient(circle at 12% 20%,#ffffff26 0 7%,transparent 7.5%),radial-gradient(circle at 85% 80%,#ffffff1e 0 11%,transparent 11.5%),linear-gradient(125deg,#172554 0%,#283e8c 48%,#684db4 100%);color:#fff}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #ffffff25;border-radius:50%;width:360px;height:360px;left:-120px;top:-180px}.hero:after{width:240px;height:240px;left:auto;right:-70px;top:auto;bottom:-150px}
+.hero-inner{max-width:1160px;margin:auto;position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:30px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff55;background:#ffffff16;border-radius:99px;padding:6px 14px;font-size:13px}
+h1{font-family:"Readex Pro",sans-serif;font-size:clamp(32px,5vw,58px);line-height:1.35;margin:18px 0 10px;font-weight:700}.hero p{color:#e4e8ff;max-width:650px;font-size:17px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{padding:12px 20px;border-radius:14px;font-weight:700;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(120deg,var(--gold),#ffe19a);color:#382b12;box-shadow:0 8px 20px #f4bd5840}.light{background:#ffffff1c;border:1px solid #ffffff65;color:white}.darkbtn{background:var(--navy);color:white}.softbtn{background:#eef1ff;color:var(--blue)}
+.hero-art{min-height:260px;display:grid;place-items:center;position:relative}.orbit{width:240px;height:240px;border:1px solid #ffffff55;border-radius:50%;display:grid;place-items:center;position:relative;animation:float 5s ease-in-out infinite}.orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed #ffffff55;border-radius:50%;inset:22px}.orbit:after{inset:48px;border-style:solid}.brain{width:112px;height:112px;border-radius:34px;background:linear-gradient(145deg,#fff,#d9e5ff);display:grid;place-items:center;color:#3349a2;font-size:54px;box-shadow:0 18px 40px #07143d55;z-index:1}.bubble{position:absolute;width:52px;height:52px;border-radius:17px;display:grid;place-items:center;background:#ffffff22;border:1px solid #ffffff65;font-size:24px;backdrop-filter:blur(8px)}.b1{top:8px;right:30px}.b2{bottom:15px;left:12px}.b3{bottom:28px;right:3px}
+@keyframes float{50%{transform:translateY(-9px) rotate(3deg)}}@keyframes pop{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}@keyframes shimmer{to{background-position:-200% center}}
+.container{max-width:1160px;margin:0 auto;padding:30px 22px 70px}.welcome{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:-22px;position:relative;z-index:2}
+.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}.panel h2,.section-title{margin:0 0 8px;color:var(--navy);font-family:"Readex Pro",sans-serif}.panel p{color:var(--muted);margin:4px 0 14px;font-size:14px}
+.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:#fbfcff;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #3157c81c}
+.progressbox{display:flex;align-items:center;gap:14px}.progressring{width:70px;height:70px;border-radius:50%;background:conic-gradient(var(--cyan) var(--progress,0%),#edf0f8 0);display:grid;place-items:center;flex:none}.progressring span{background:white;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-weight:800;color:var(--navy);font-size:13px}.progressbar{height:9px;background:#edf0f8;border-radius:99px;overflow:hidden;margin-top:8px}.progressbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:99px;transition:width .5s}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:42px 0 18px}.sectionhead p{margin:0;color:var(--muted);font-size:14px}.station-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.station{position:relative;overflow:hidden;background:white;border:1px solid var(--line);border-radius:20px;padding:17px 15px;min-height:190px;text-align:right;box-shadow:0 8px 25px #1725540a;transition:.25s;cursor:pointer}.station:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.station:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:var(--accent)}.station .num{font-size:12px;color:var(--muted)}.station .ico{width:48px;height:48px;border-radius:16px;background:var(--tint);display:grid;place-items:center;font-size:24px;margin:12px 0}.station h3{font-size:15px;color:var(--navy);margin:0 0 5px}.station p{font-size:12px;color:var(--muted);margin:0}.station .status{position:absolute;left:13px;top:13px;color:var(--mint);font-size:17px}
+.detail{display:none;animation:pop .35s ease}.detail.show{display:block}.detail-head{border-radius:24px;padding:25px;color:white;background:linear-gradient(120deg,var(--station-color,#3157c8),#25366f);display:flex;justify-content:space-between;align-items:center;gap:16px}.detail-head h2{margin:4px 0;font-family:"Readex Pro";font-size:25px}.detail-head p{margin:0;color:#e7ebff}.detail-body{display:grid;grid-template-columns:1fr 280px;gap:18px;margin-top:18px}.lesson{background:white;border:1px solid var(--line);border-radius:20px;padding:24px}.lesson h3{color:var(--navy);margin-top:0}.lesson h4{color:var(--blue);margin-bottom:5px}.lesson p,.lesson li{color:#53607d;font-size:14px}.lesson ul{padding-right:22px}.tip{background:#f1f8ff;border-right:4px solid var(--cyan);padding:13px 16px;border-radius:12px;margin:14px 0;color:#38506f;font-size:14px}
+.quiz{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;height:max-content;box-shadow:var(--shadow)}.quiz h3{margin:0;color:var(--navy)}.qitem{padding:15px 0;border-bottom:1px solid var(--line)}.qitem:last-child{border:0}.qitem p{font-weight:700;font-size:14px;margin:0 0 10px}.option{display:block;width:100%;text-align:right;background:#f6f7fc;border:1px solid #edf0f8;border-radius:11px;padding:9px 12px;margin:6px 0;color:#43506d;font-size:13px}.option:hover{border-color:#9ba9ef}.option.correct{background:#e8f8f1;border-color:#75d6b0;color:#176345}.option.wrong{background:#fff0f2;border-color:#f28aa8;color:#9b3450}.feedback{font-size:12px;color:var(--muted);min-height:20px}.sidecard{background:white;border:1px solid var(--line);border-radius:20px;padding:19px;height:max-content}.sidecard .score{font-size:30px;color:var(--blue);font-weight:800}.sidecard p{color:var(--muted);font-size:13px}
+.games{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.game{background:white;border:1px solid var(--line);border-radius:20px;padding:18px;transition:.2s}.game:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.game .ico{font-size:29px}.game h3{font-size:15px;color:var(--navy);margin:8px 0 3px}.game p{font-size:12px;color:var(--muted);min-height:42px;margin:0 0 12px}.gamearea{display:none;margin-top:18px;animation:pop .3s}.gamearea.show{display:block}.gamebox{background:linear-gradient(135deg,#172554,#344c9c);color:white;border-radius:22px;padding:24px}.gamebox h3{margin-top:0}.game-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:15px 0}.game-options button{background:#ffffff18;border:1px solid #ffffff55;color:white;border-radius:13px;padding:12px}.game-options button:hover{background:#ffffff32}.game-result{font-weight:700;color:#ffe09a;min-height:28px}
+.certificate{background:linear-gradient(135deg,#fff,#f5f1ff);border:8px double #c5a45a;padding:28px;text-align:center;border-radius:10px;color:#26345d;max-width:850px;margin:20px auto}.certificate .school{font-weight:800;color:#26345d}.certificate h2{font-family:"Readex Pro";font-size:30px;color:#26345d}.certificate .name{font-size:25px;font-weight:800;color:#6b4db1;border-bottom:1px solid #c5a45a;display:inline-block;padding:5px 35px}.signs{display:flex;justify-content:space-between;margin-top:35px;font-size:13px;font-weight:700}
+footer{text-align:center;padding:28px;color:#8790a8;font-size:12px}
+@media(max-width:900px){.station-grid,.games{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr}.hero-art{display:none}.detail-body{grid-template-columns:1fr}.welcome{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:520px){.station-grid,.games{grid-template-columns:1fr 1fr}.formrow{grid-template-columns:1fr}.hero{padding:45px 22px}.container{padding-inline:14px}.station{min-height:170px}.sectionhead{align-items:start;flex-direction:column}.game-options{grid-template-columns:1fr}}
+@media print{.topbar,.hero,.welcome,.sectionhead,.station-grid,.detail,.games,.gamearea,footer,.no-print{display:none!important}body{background:white}.certificate{display:block!important;box-shadow:none;margin:20px auto;page-break-inside:avoid}}
+
+body{background:radial-gradient(ellipse at 8% 12%,#e8e2ff 0,transparent 28%),radial-gradient(ellipse at 92% 32%,#ffe4ec 0,transparent 25%),#f7f8ff!important}
+.hero{background:linear-gradient(120deg,#20245f,#5744a7 48%,#168f9b)!important}
+.station{min-height:245px!important;border-radius:24px!important;overflow:hidden!important}
+.station-art{height:102px;border-radius:18px;margin:10px 0 12px;display:grid;place-items:center;overflow:hidden}
+.station-art svg{width:100%;height:100%;max-width:220px;filter:drop-shadow(0 8px 7px #1b255522);animation:artFloat 4s ease-in-out infinite}
+.art-1{background:linear-gradient(135deg,#e4eaff,#d8f4ff)}.art-2{background:linear-gradient(135deg,#f0e7ff,#ffe1ed)}.art-3{background:linear-gradient(135deg,#d9f7ee,#e7f7ff)}.art-4{background:linear-gradient(135deg,#fff0cf,#ffe4db)}.art-5{background:linear-gradient(135deg,#ffe3ed,#e9e4ff)}
+.station .ico{display:none}.station:hover{transform:translateY(-7px) scale(1.015)!important;box-shadow:0 18px 35px #5945a52a!important}
+.game{border-radius:22px!important;min-height:215px;box-shadow:0 12px 28px #27336b13!important;transition:transform .25s!important}
+.game:nth-child(1){background:linear-gradient(145deg,#fff0c9,#fff)!important}.game:nth-child(2){background:linear-gradient(145deg,#f0e5ff,#fff)!important}.game:nth-child(3){background:linear-gradient(145deg,#dff8f3,#fff)!important}.game:nth-child(4){background:linear-gradient(145deg,#ffe3ea,#fff)!important}.game:nth-child(5){background:linear-gradient(145deg,#e1efff,#fff)!important}
+.game:hover{transform:translateY(-6px) rotate(-.4deg)}.game .ico{display:inline-grid;place-items:center;width:60px;height:60px;border-radius:20px;background:#ffffffc9;font-size:30px;animation:artFloat 3s ease-in-out infinite}
+.gamebox{background:linear-gradient(130deg,#22245f,#5746aa 60%,#147f8c)!important;position:relative;overflow:hidden;box-shadow:0 18px 38px #25245b33}
+.game-options button{background:#ffffff1c!important;border:1px solid #ffffff65!important;min-height:58px}
+.certificate{border-radius:6px!important;background:radial-gradient(circle at 10% 10%,#f8edcf 0,transparent 22%),radial-gradient(circle at 90% 90%,#e8e2ff 0,transparent 25%),#fffdf8!important;min-height:570px;display:flex;flex-direction:column;justify-content:center;position:relative}
+@keyframes artFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+
+.game-maze .gamebox,.gamebox.game-maze{background:linear-gradient(135deg,#28346f,#6553b9 60%,#a16acb)!important}
+.game-race .gamebox,.gamebox.game-race{background:linear-gradient(135deg,#8c2e64,#d84f76 55%,#f49b55)!important}
+.game-treasure .gamebox,.gamebox.game-treasure{background:linear-gradient(135deg,#075b63,#168c82 55%,#d39a3c)!important}
+.game-scene{font-size:25px;text-align:center;padding:13px;margin:-4px 0 12px;border-radius:16px;background:#ffffff20;letter-spacing:2px;animation:artFloat 2.8s ease-in-out infinite}
+.game-meta{font-size:12px;color:#fffbd7;margin-bottom:8px}
+.game-track{height:9px;border-radius:20px;background:#ffffff35;overflow:hidden;margin-bottom:18px}
+.game-track i{display:block;height:100%;background:#ffe08a;border-radius:20px;transition:width .35s}
+.treasure-win{margin-top:18px;padding:14px;border-radius:15px;background:#fff2bf;color:#735014;text-align:center;font-weight:800;animation:pop .4s}
+.game:nth-child(1){background:linear-gradient(145deg,#e8e3ff,#fff)!important}
+.game:nth-child(2){background:linear-gradient(145deg,#ffe0e9,#fff)!important}
+.game:nth-child(3){background:linear-gradient(145deg,#dff7ed,#fff)!important}
+
+</style>
+</head>
+<body>
+<nav class="topbar">
+ <div class="brand"><span class="brandmark">✦</span><span>رحلة الذكاء <small style="display:block;font-size:10px;color:#8992aa;font-weight:400">مساحة تعلم تفاعلية</small></span></div>
+ <div class="navlinks"><button class="active" onclick="go('stations')">المحطات</button><button onclick="go('games')">الألعاب</button><button onclick="go('certificate')">الشهادة</button></div>
+</nav>
+<header class="hero">
+ <div class="hero-inner">
+  <div>
+   <span class="eyebrow">✦ دورة تدريبية تفاعلية للمعلمات</span>
+   <h1>الذكاء الاصطناعي<br><span style="color:#ffdc91">في التعليم</span></h1>
+   <p>من الفهم إلى التطبيق… اكتشفي كيف توظفين أدوات الذكاء الاصطناعي بوعي وابتكار، وتصنعين تجربة تعليمية أكثر ثراءً وتأثيرًا.</p>
+   <div class="hero-actions"><button class="btn primary" onclick="go('stations')">ابدئي رحلتك <span>←</span></button><button class="btn light" onclick="go('games')">اكتشفي التحديات ✧</button></div>
+  </div>
+  <div class="hero-art"><div class="orbit"><div class="brain">✧</div><span class="bubble b1">✦</span><span class="bubble b2">⌘</span><span class="bubble b3">◎</span></div></div>
+ </div>
+</header>
+<main class="container">
+ <section class="welcome">
+  <div class="panel">
+   <h2>أهلًا بكِ في رحلة التعلّم</h2><p>سجّلي بياناتك للبدء. تقدّمك محفوظ على هذا الجهاز والمتصفح.</p>
+   <div class="formrow">
+    <div class="field"><label>الاسم الثلاثي</label><input id="trainee" placeholder="اكتبي اسمك الثلاثي"></div>
+    <div class="field"><label>التخصص</label><input id="specialty" placeholder="مثال: دراسات اجتماعية"></div>
+    <div class="field"><label>المرحلة التعليمية</label><select id="stage"><option value="">اختاري المرحلة</option><option>ابتدائي</option><option>متوسط</option><option>ثانوي</option><option>رياض أطفال</option><option>أخرى</option></select></div>
+    <div style="display:flex;align-items:end"><button class="btn darkbtn" style="width:100%" onclick="saveProfile()">حفظ البيانات</button></div>
+   </div><div id="profileMsg" class="feedback"></div>
+  </div>
+  <div class="panel">
+   <div class="progressbox"><div class="progressring" id="ring"><span id="percent">0%</span></div><div style="flex:1"><h2>إنجازكِ يتقدّم</h2><p id="progressText">ابدئي بالمحطة الأولى، واجمعي النقاط خطوة بخطوة.</p><div class="progressbar"><i id="bar"></i></div></div></div>
+   <div style="display:flex;justify-content:space-between;margin-top:15px;color:#6b7590;font-size:12px"><span>المحطات <b id="stationCount">0 / 5</b></span><span>النقاط <b id="points">0</b> / 160</span></div>
+  </div>
+ </section>
+ <div class="sectionhead" id="stations"><div><h2 class="section-title">محطات رحلتكِ الخمس</h2><p>تعلّمي، طبّقي، واجتازي التحدي لفتح المحطة التالية.</p></div><span class="eyebrow" style="background:#edf1ff;color:#5264b8;border:0">20 نقطة لكل محطة</span></div>
+ <div class="station-grid" id="stationGrid"></div>
+ <section class="detail" id="stationDetail"></section>
+ <div class="sectionhead" id="games"><div><h2 class="section-title">ساحة التحديات والألعاب</h2><p>بعد اجتياز المحطات الخمس، انطلقي في ثلاثة تحديات تفاعلية: المتاهة والسباق وخريطة الكنز.</p></div><span class="eyebrow" style="background:#fff5df;color:#92651b;border:0">20 نقطة لكل تحدٍ</span></div>
+ <div class="games" id="gameGrid"></div><div class="gamearea" id="gameArea"></div>
+ <div class="sectionhead" id="certificate"><div><h2 class="section-title">لحظة التميّز</h2><p>تظهر الشهادة بعد اجتياز متطلبات الرحلة والألعاب.</p></div></div>
+ <div class="panel" id="certGate"><h3 style="margin-top:0;color:var(--navy)">شهادتكِ بانتظار إنجازكِ</h3><p style="color:var(--muted)">أكملي المحطات الخمس والتحديات الثلاثة لتحصلي على 160 نقطة وتفتحي شهادتكِ.</p><div class="progressbar"><i id="certBar"></i></div><p id="certMsg" class="feedback">لم تُستكمل المتطلبات بعد.</p></div>
+ <div id="certificateView" style="display:none">
+  <div class="certificate"><div class="school">الابتدائية الرابعة بالحوية</div><div style="color:#9b7b3e">✦ ✦ ✦</div><h2>شهادة اجتياز دورة تدريبية</h2><p>الذكاء الاصطناعي في التعليم</p><p>تُمنح للمعلمة</p><div class="name" id="certName"></div><p style="max-width:650px;margin:18px auto">تقديرًا لاجتيازها متطلبات الدورة وإتمام محطاتها وأنشطتها وتحدياتها بنجاح. شكرًا لشغفكِ بالتعلّم وحرصكِ على تطوير مهاراتكِ المهنية وتسخير المعرفة والابتكار لصناعة تجربة تعليمية أكثر إبداعًا وتميّزًا.</p><div class="signs"><span>المعلمة المنفذة: فاطمة الثبيتي</span><span>مديرة المدرسة: غادة الشريف</span></div><p id="certDate" style="font-size:12px;color:#8c7a55;margin-top:25px"></p></div>
+  <div class="no-print" style="text-align:center"><button class="btn darkbtn" onclick="window.print()">طباعة / حفظ PDF</button></div>
+ </div>
+</main>
+<footer>الابتدائية الرابعة بالحوية · رحلة تعلم تفاعلية في الذكاء الاصطناعي</footer>
+<script>
+const lessons=[
+{title:"الفهم العميق للذكاء الاصطناعي",icon:"🧠",color:"#3157c8",tint:"#edf0ff",desc:"كيف تفكر الأنظمة الذكية؟ وما الذي تستطيع فعله فعلًا؟",sections:[
+["من القواعد إلى النماذج التوليدية","بدأت الأنظمة الذكية بقواعد يكتبها الإنسان: إذا حدث كذا فافعل كذا. ثم تطور المجال إلى التعلم الآلي الذي يستخلص الأنماط من البيانات، وبعده التعلم العميق الذي يستخدم شبكات عصبية متعددة الطبقات. أما النماذج التوليدية فتتعلم أنماطًا واسعة من النصوص أو الصور أو الأصوات لتنتج محتوى جديدًا استجابةً للطلب."],
+["مصطلحات يجب التمييز بينها","الذكاء الاصطناعي هو المجال الأوسع. التعلم الآلي فرع يتعلم من البيانات. التعلم العميق يستخدم شبكات عصبية متعددة الطبقات. معالجة اللغة الطبيعية تهتم بفهم اللغة وتوليدها. الذكاء التوليدي ينتج نصوصًا أو صورًا أو صوتًا أو غيرها."],
+["كيف تعمل أدوات المحادثة؟","تحوّل الأداة النص إلى وحدات رقمية، ثم تستخدم نموذجًا مدرّبًا لتقدير التسلسل الأكثر ملاءمة للسياق. هي لا تفكر مثل الإنسان ولا تضمن الحقيقة؛ بل تولّد استجابة اعتمادًا على الأنماط التي تعلمتها والسياق الذي قدمتِه."],
+["الهلوسة والتحقق","قد تقدم الأداة معلومة خاطئة بصياغة واثقة، أو تخترع مرجعًا. لذلك تحققي من الحقائق والأرقام والمصادر، وارجعي إلى الكتاب المدرسي أو مصدر رسمي قبل اعتماد المحتوى."],
+["تطبيق تربوي","قبل الدرس: توليد أفكار وتمهيد. أثناء الدرس: أمثلة وأسئلة متدرجة. بعد الدرس: تحليل إجابات عامة بعد إزالة الهوية، واقتراح أنشطة علاجية وإثرائية. القرار التربوي النهائي يبقى للمعلمة."]
+],tip:"تذكّري: الذكاء الاصطناعي مساعد في التفكير والإنتاج، وليس مصدرًا معصومًا للحقيقة." ,qs:[["أي عبارة تصف التعلم الآلي بدقة؟",["يتعلم أنماطًا من البيانات","ينفذ تعليمات ثابتة فقط","يضمن صحة كل إجابة"],0,"يتعلم التعلم الآلي الأنماط من البيانات بدل الاكتفاء بقواعد ثابتة."],["قدمت الأداة معلومة تاريخية غير مألوفة. ما التصرف المهني؟",["اعتمادها فورًا","التحقق من مصدر موثوق","إعادة صياغتها فقط"],1,"التحقق من المصدر ضروري لأن النموذج قد يهلوس أو يخطئ."]]},
+{title:"هندسة الأوامر الذكية",icon:"✍️",color:"#7a5bd2",tint:"#f2edff",desc:"حوّلي الطلب العادي إلى أمر واضح ينتج مخرجات دقيقة.",sections:[
+["ما هندسة الأوامر؟","هي مهارة تصميم التعليمات التي تقدمينها للأداة حتى تفهم المهمة والسياق والجمهور وشكل الناتج. جودة المخرجات ترتبط بوضوح المدخلات، لكنها لا تلغي ضرورة المراجعة."],
+["المكونات الستة للأمر الاحترافي","حددي الدور: تصرف كخبير تصميم تعليمي. المهمة: صمم نشاطًا. السياق: درس وموضوع محددان. الجمهور: صف أو مرحلة. القيود: الوقت والمستوى واللغة. شكل الناتج: جدول أو خطوات أو أسئلة مع معايير جودة."],
+["من الطلب العام إلى الطلب المحكم","طلب عام: اكتب أسئلة عن البيئة. طلب محسن: أنت مصمم تقويم للمرحلة الابتدائية؛ اكتب ستة أسئلة عن التوازن البيئي، سؤالين للتذكر وسؤالين للفهم وسؤالين للتطبيق، بلغة مناسبة للعمر، مع مفتاح إجابة وتفسير مختصر."],
+["التطوير بالحوار","لا تتوقعي الوصول إلى أفضل نتيجة من محاولة واحدة. اطلبي مسودة، ثم راجعيها وحددي ما يحتاج تعديلًا: بسّطي اللغة، زيدي مستوى التحدي، أضيفي أمثلة محلية، أو رتبي الناتج في جدول."],
+["تطبيق عملي","اطلبي من الأداة خطة درس محددة، ثم أعيدي تحسين الأمر بإضافة الزمن، الأهداف، خصائص الطالبات، الموارد، أساليب التقويم، ومستويات التمايز."]
+],tip:"صيغة عملية: الدور + المهمة + السياق + الجمهور + القيود + شكل الناتج + معيار الجودة.",qs:[["ما العنصر الذي يحدد لمن صُمم النشاط؟",["الدور","الجمهور","شكل الناتج"],1,"الجمهور يحدد المرحلة والخصائص ومستوى اللغة."],["أي أمر أكثر جودة؟",["اكتب اختبارًا","صمم 8 أسئلة للصف الرابع عن الخريطة، متنوعة الصعوبة، مع الإجابات"],1,"الأمر الثاني يحدد العدد والجمهور والموضوع والتنوع والمخرجات."]]},
+{title:"تصميم التعليم والتقويم الذكي",icon:"🎯",color:"#168f91",tint:"#e7f8f5",desc:"اربطي التقنية بأهداف التعلم والتقويم والتمايز.",sections:[
+["ابدئي بناتج التعلم","حددي ما الذي ينبغي أن تعرفه المتعلمة أو تؤديه في نهاية الدرس. اجعلي الهدف قابلًا للملاحظة والقياس، ثم اختاري نشاطًا وأداة تقويم يقيسان الهدف نفسه."],
+["التصميم وفق مستويات بلوم","يمكن توظيف الأداة لصياغة أسئلة التذكر والفهم والتطبيق والتحليل والتقويم والإبداع. لا يكفي تغيير فعل السؤال؛ بل يجب أن تتطلب المهمة فعلًا معرفيًا مناسبًا."],
+["التعليم المتمايز","اطلبي ثلاث نسخ من المهمة: دعمًا إضافيًا بخطوات وصور، ومستوى متوسطًا بتطبيق مباشر، ومستوى متقدمًا يتطلب تفسيرًا أو تبريرًا أو إنتاجًا. حافظي على الهدف الأساسي مع تنويع الدعم والتحدي."],
+["التقويم التكويني والتغذية الراجعة","استخدمي أسئلة قصيرة وبطاقات خروج وتحليلًا مجمعًا للأخطاء. اجعلي التغذية الراجعة محددة: ما الذي أتقنته الطالبة؟ ما الخطوة التالية؟ تجنبي إدخال بيانات شخصية في الأدوات العامة."],
+["تطبيق عملي","صممي نشاطًا بثلاثة مستويات حول موضوع من منهجك، ثم اكتبي معيار نجاح واضحًا وسؤالًا ختاميًا يكشف تحقق الهدف."]
+],tip:"لا تختاري الأداة أولًا؛ اختاري ناتج التعلم ثم قرري هل التقنية تضيف قيمة حقيقية.",qs:[["ما نقطة البداية الأفضل لتصميم نشاط ذكي؟",["اختيار التطبيق الأكثر شهرة","تحديد ناتج التعلم","زيادة عدد الأسئلة"],1,"ناتج التعلم هو الذي يوجه النشاط والأداة والتقويم."],["ما المقصود بالتعليم المتمايز؟",["هدف مختلف لكل طالبة دائمًا","تنويع الدعم والتحدي للوصول إلى الهدف","استخدام جهاز واحد للجميع"],1,"التمايز يراعي الفروق في الاستعداد ويقدم مسارات دعم وتحدٍ مناسبة."]]},
+{title:"مختبر الأدوات والتطبيقات الذكية",icon:"🧰",color:"#d18a2f",tint:"#fff4e2",desc:"اختاري الأداة المناسبة للمهمة، لا العكس.",sections:[
+["عائلات الأدوات","أدوات المحادثة والكتابة تساعد في التخطيط والصياغة. أدوات الصور والتصميم تنتج موارد بصرية. أدوات الصوت والفيديو تدعم الشرح. أدوات الاختبارات والألعاب تبني تفاعلًا. وأدوات تحليل البيانات تساعد في قراءة النتائج."],
+["كيف تختارين الأداة؟","اسألي: هل تدعم العربية؟ هل تسمح بالتصدير؟ ما سياسة الخصوصية؟ هل تحتاج حسابًا للطالبات؟ هل هي مجانية أو محدودة؟ هل تناسب العمر والسياق؟ وهل يمكن مراجعة الناتج قبل استخدامه؟"],
+["سير عمل متكامل","ابدئي بتحديد الهدف، استخدمي أداة نصية لبناء المسودة، أداة تصميم لإنتاج بطاقة أو عرض، ثم أداة تقويم لبناء أسئلة. راجعي الاتساق والدقة وإمكانية الوصول قبل النشر."],
+["التقنية ليست غاية","قد يكون النقاش الوجاهي أو الورقة البسيطة أفضل من تطبيق جديد. اختاري التقنية حين تحسن الفهم أو التفاعل أو التغذية الراجعة أو توفر وقتًا ذا قيمة."],
+["تطبيق عملي","اختاري أداة مناسبة لكل مهمة: إعداد مسودة شرح، تصميم صورة تعليمية، وبناء اختبار قصير. اكتبي سبب الاختيار واحتياطات الخصوصية."]
+],tip:"قيمي الأداة وفق المهمة والخصوصية وسهولة الاستخدام والتكلفة وإمكانية التصدير.",qs:[["تريدين تصميم صورة تعليمية. ما الفئة الأنسب؟",["أداة توليد الصور أو التصميم","جدول بيانات","أداة ضغط ملفات"],0,"أدوات الصور والتصميم مناسبة لإنتاج الموارد البصرية."],["ما معيار لا ينبغي تجاهله عند اختيار أداة؟",["لون شعارها","الخصوصية ودعم العربية","عدد الإعلانات فقط"],1,"الخصوصية ودعم اللغة وملاءمة العمر من معايير الاختيار الأساسية."]]},
+{title:"الأمان والأخلاقيات والمسؤولية الرقمية",icon:"🛡️",color:"#c45478",tint:"#fff0f4",desc:"استخدمي الذكاء الاصطناعي بمسؤولية وثقة.",sections:[
+["خصوصية الطالبات","لا تدخلي أسماء الطالبات أو أرقام هوياتهن أو صورهن أو معلوماتهن الصحية في أدوات عامة دون تصريح وضوابط معتمدة. استخدمي بيانات مجهولة أو أمثلة افتراضية، وقللي البيانات إلى الحد الضروري."],
+["الدقة والتحيز والإنصاف","قد تعكس المخرجات تحيزات في البيانات أو تقدم تمثيلًا غير منصف. راجعي الأمثلة واللغة والصور، وتحققي من أن المحتوى مناسب لجميع الطالبات ولا يعزز الصور النمطية."],
+["الملكية الفكرية","تحققي من حقوق استخدام الصور والنصوص والمواد، والتراخيص وشروط المنصة. لا تنسبي عملًا مولدًا أو منقولًا إلى نفسك دون مراجعة، واذكري استخدام الأداة عندما تتطلب السياسة ذلك."],
+["المعلمة صاحبة القرار","الأداة تقترح ولا تقرر بدل المعلمة. راجعي المحتوى تربويًا وعلميًا، ولا تفوضي لها أحكامًا حساسة عن الطالبات أو قرارات تتعلق بتقييمهن أو سلامتهن."],
+["تطبيق عملي","عند إعداد نشاط، استبدلي أسماء الطالبات برموز عامة، وتحققي من مصدر المعلومات، وراجعي الصور واللغة وحقوق الاستخدام قبل مشاركة الناتج."]
+],tip:"قاعدة ذهبية: لا تشاركي بيانات شخصية، تحققي من المعلومة، واحتفظي بالقرار التربوي بيدك.",qs:[["ما التصرف الأكثر أمانًا عند تحليل إجابات الطالبات؟",["رفع الأسماء والدرجات كاملة لأداة عامة","إزالة الهوية وتقليل البيانات واستخدام أداة معتمدة","إضافة أرقام الهوية لتسهيل التحليل"],1,"إزالة الهوية وتقليل البيانات يقللان مخاطر كشف المعلومات."],["من المسؤول عن اعتماد المحتوى المولد؟",["الأداة وحدها","المعلمة بعد المراجعة والتحقق","أي مستخدم يراه"],1,"المعلمة مسؤولة عن مراجعة المحتوى وملاءمته قبل استخدامه."]]}
+];
+let state=JSON.parse(localStorage.getItem("aiJourneyState")||'{"done":[],"games":[],"profile":{},"points":0}');
+let currentStation=0,gameIndex=0;
+// ترحيل أي تقدم محفوظ من النسخة السابقة إلى نظام المحطات الخمس والتحديات الثلاثة.
+state.games=(state.games||[]).filter(i=>i>=0&&i<3);
+state.points=(state.done||[]).length*20+state.games.length*20;
+function persist(){localStorage.setItem("aiJourneyState",JSON.stringify(state));updateProgress()}
+function saveProfile(){state.profile={name:document.getElementById("trainee").value.trim(),specialty:document.getElementById("specialty").value.trim(),stage:document.getElementById("stage").value};persist();document.getElementById("profileMsg").textContent=state.profile.name?"تم حفظ بياناتكِ، أهلًا بكِ!":"اكتبي اسمكِ أولًا."}
+function updateProgress(){let total=state.done.length+state.games.length;let pct=Math.round(total/8*100);document.getElementById("percent").textContent=pct+"%";document.getElementById("ring").style.setProperty("--progress",pct+"%");document.getElementById("bar").style.width=pct+"%";document.getElementById("stationCount").textContent=state.done.length+" / 5";document.getElementById("points").textContent=state.points;document.getElementById("progressText").textContent=total===8?"أحسنتِ! أكملتِ جميع أجزاء الرحلة.":"أنجزتِ "+total+" من 8 مراحل.";document.getElementById("certBar").style.width=Math.min(100,state.points/160*100)+"%";let ok=state.done.length===5&&state.games.length===3&&state.points>=160;document.getElementById("certGate").style.display=ok?"none":"block";document.getElementById("certificateView").style.display=ok?"block":"none";if(ok){document.getElementById("certName").textContent=state.profile.name||"اسم المعلمة";document.getElementById("certDate").textContent="تاريخ الإصدار: "+new Date().toLocaleDateString("ar-SA");}}
+
+function stationArt(i){
+const a=[
+`<svg viewBox="0 0 220 110"><circle cx="110" cy="55" r="43" fill="#fff" opacity=".7"/><path d="M87 34Q74 40 79 53Q69 70 87 78Q92 91 108 82Q125 92 134 77Q151 67 139 52Q145 36 128 31Q115 18 102 30Z" fill="#6376d9"/><path d="M94 47h32M94 58h32M99 69h22M110 31v48" stroke="white" stroke-width="4" stroke-linecap="round"/><circle cx="110" cy="55" r="7" fill="#ffd46a"/></svg>`,
+`<svg viewBox="0 0 220 110"><rect x="43" y="15" width="112" height="80" rx="12" fill="#fff" stroke="#9b7be0" stroke-width="4"/><rect x="53" y="25" width="92" height="60" rx="7" fill="#eee9ff"/><circle cx="78" cy="43" r="10" fill="#ffd36d"/><path d="M57 76l25-23 17 15 18-19 22 27Z" fill="#a994ed"/><path d="M165 20l7 18 18 7-18 7-7 18-7-18-18-7 18-7Z" fill="#f28aa8"/><path d="M159 79l7 7 15-18" fill="none" stroke="#8d79df" stroke-width="5" stroke-linecap="round"/></svg>`,
+`<svg viewBox="0 0 220 110"><rect x="55" y="12" width="88" height="88" rx="12" fill="#fff" stroke="#53bcae" stroke-width="4"/><path d="M73 34l6 6 10-12M99 36h28M73 56l6 6 10-12M99 58h28M73 78l6 6 10-12M99 80h28" fill="none" stroke="#38a99c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="151" y="28" width="42" height="57" rx="8" fill="#e7f8f5" stroke="#53bcae" stroke-width="3"/><path d="M160 70V57h7v13m4 0V45h7v25" fill="none" stroke="#e5a13e" stroke-width="4" stroke-linecap="round"/></svg>`,
+`<svg viewBox="0 0 220 110"><rect x="43" y="18" width="112" height="67" rx="9" fill="#fff" stroke="#e5a13e" stroke-width="4"/><rect x="53" y="28" width="92" height="47" rx="5" fill="#fff1d9"/><circle cx="76" cy="49" r="9" fill="#f28aa8"/><path d="M93 43h39M93 54h29M66 68l13-10 12 8 15-17 17 10" fill="none" stroke="#d18a2f" stroke-width="4" stroke-linecap="round"/><path d="M32 88h135l-12 10H44Z" fill="#e5a13e"/><circle cx="177" cy="33" r="14" fill="#8d79df"/><path d="M177 25v16m-8-8h16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="184" cy="75" r="10" fill="#53bcae"/><path d="M180 75l3 3 6-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>`,
+`<svg viewBox="0 0 220 110"><path d="M110 12l48 18v27q-3 30-48 47Q65 87 62 57V30Z" fill="#fff" stroke="#e47b9b" stroke-width="4"/><path d="M110 29l31 12v17q-3 20-31 32Q82 78 79 58V41Z" fill="#f8dce7"/><path d="M94 56l11 11 23-25" fill="none" stroke="#c45478" stroke-width="7" stroke-linecap="round"/></svg>`
+];return a[i]}
+
+function renderStations(){let grid=document.getElementById("stationGrid");grid.innerHTML=lessons.map((l,i)=>{let unlocked=i===0||state.done.includes(i-1);let done=state.done.includes(i);return `<button class="station" style="--accent:${l.color};--tint:${l.tint}" ${unlocked?'':'disabled'} onclick="openStation(${i})"><span class="num">المحطة ${["الأولى","الثانية","الثالثة","الرابعة","الخامسة"][i]}</span><span class="status">${done?"✓":unlocked?"●":"🔒"}</span><div class="station-art art-${i+1}">${stationArt(i)}</div><h3>${l.title}</h3><p>${unlocked?(done?"تم الاجتياز · 20 نقطة":l.desc):"اجتازي المحطة السابقة لفتحها"}</p></button>`}).join("")}
+function openStation(i){if(i>0&&!state.done.includes(i-1))return;currentStation=i;let l=lessons[i],el=document.getElementById("stationDetail");el.className="detail show";el.innerHTML=`<div class="detail-head" style="--station-color:${l.color}"><div><span>المحطة ${i+1} من 5</span><h2>${l.icon} ${l.title}</h2><p>${l.desc}</p></div><button class="btn light" onclick="closeStation()">إغلاق ✕</button></div><div class="detail-body"><article class="lesson"><h3>محتوى المحطة</h3>${l.sections.map(s=>`<h4>${s[0]}</h4><p>${s[1]}</p>`).join("")}<div class="tip">✦ ${l.tip}</div><h3>اختبري فهمكِ</h3><p>أجيبي عن السؤالين بشكل صحيح لاجتياز المحطة والحصول على 20 نقطة.</p></article><aside class="quiz"><h3>تحدي المحطة</h3><p style="color:#78829a;font-size:12px">إجابتان صحيحتان لفتح المحطة التالية</p>${l.qs.map((q,qi)=>`<div class="qitem"><p>${qi+1}. ${q[0]}</p>${q[1].map((o,oi)=>`<button class="option" id="s${i}q${qi}o${oi}" onclick="answerStation(${i},${qi},${oi})">${o}</button>`).join("")}<div class="feedback" id="s${i}f${qi}"></div></div>`).join("")}<div class="score">20 نقطة</div></aside></div>`;el.scrollIntoView({behavior:"smooth",block:"start"})}
+function answerStation(si,qi,oi){let q=lessons[si].qs[qi],fb=document.getElementById(`s${si}f${qi}`);if(fb.dataset.done)return;let b=document.getElementById(`s${si}q${qi}o${oi}`);if(oi===q[2]){b.classList.add("correct");fb.textContent="إجابة صحيحة! "+q[3];fb.dataset.done="1";let complete=lessons[si].qs.every((_,k)=>document.getElementById(`s${si}f${k}`).dataset.done==="1");if(complete&&!state.done.includes(si)){state.done.push(si);state.points+=20;persist();renderStations();fb.textContent+=" تم اجتياز المحطة! حصلتِ على 20 نقطة، والمحطة التالية أصبحت متاحة.";}}else{b.classList.add("wrong");fb.textContent="حاولي مرة أخرى. "+q[3]}}
+function closeStation(){document.getElementById("stationDetail").className="detail"}
+function finishStation(){ }
+const games=[
+{title:"متاهة المعرفة",icon:"🌀",kind:"maze",desc:"اختاري المسار الصحيح في متاهة القرارات التعليمية.",steps:[
+{q:"وصلتِ إلى بوابة إعداد الدرس. ما أول خطوة؟",opts:["تحديد ناتج التعلم","اختيار ألوان العرض","فتح أي أداة"],a:0,why:"نبدأ دائمًا بناتج التعلم."},
+{q:"ظهر لكِ محتوى مولّد يتضمن معلومة تاريخية. ماذا تفعلين؟",opts:["اعتماده فورًا","التحقق من مصدر موثوق","حذفه دون مراجعة"],a:1,why:"التحقق يحمي دقة المحتوى."},
+{q:"قبل مشاركة النشاط مع الطالبات؟",opts:["مراجعة الملاءمة والخصوصية","إضافة أسماء الطالبات للأداة","نشره دون تجربة"],a:0,why:"المراجعة والخصوصية جزء من مسؤولية المعلمة."}]},
+{title:"سباق الذكاء",icon:"🏁",kind:"race",desc:"تقدّمي على مضمار السباق بثلاث إجابات صحيحة.",steps:[
+{q:"ما الذي يجعل الأمر أكثر دقة؟",opts:["سياق وجمهور واضحان","طلب عام جدًا","غياب شكل الناتج"],a:0,why:"السياق والجمهور يوجهان النتيجة."},
+{q:"أي أداة تناسب تصميم صورة تعليمية؟",opts:["أداة تصميم أو توليد صور","جدول بيانات","أداة ضغط ملفات"],a:0,why:"هذه الأدوات تنتج موارد بصرية."},
+{q:"كيف توظفين الذكاء الاصطناعي بمسؤولية؟",opts:["بديل عن المعلمة","مساعد مع مراجعة بشرية","مصدر وحيد للحقيقة"],a:1,why:"تبقى المعلمة صاحبة القرار التربوي."}]},
+{title:"خريطة الكنز",icon:"🗺️",kind:"treasure",desc:"افتحي ثلاث محطات على الخريطة حتى تصلي إلى الكنز الذهبي.",steps:[
+{q:"العلامة الأولى: ما المبدأ الأهم عند إدخال بيانات الطالبات؟",opts:["تقليل البيانات وإخفاء الهوية","إدخال الأسماء كاملة","مشاركة الملفات علنًا"],a:0,why:"حماية الخصوصية تبدأ بتقليل البيانات."},
+{q:"العلامة الثانية: كيف تختارين أداة تعليمية؟",opts:["حسب شهرتها فقط","حسب المهمة والخصوصية ودعم العربية","حسب شكل شعارها"],a:1,why:"اختيار الأداة يعتمد على ملاءمتها للمهمة."},
+{q:"العلامة الأخيرة: من يعتمد المحتوى قبل استخدامه؟",opts:["الأداة وحدها","المعلمة بعد المراجعة","أي مستخدم دون تحقق"],a:1,why:"المعلمة مسؤولة عن مراجعة المحتوى واعتماده."}]}
+];
+let gameProgress={};
+function renderGames(){document.getElementById("gameGrid").innerHTML=games.map((g,i)=>`<div class="game game-${g.kind}"><div class="ico">${g.icon}</div><h3>${g.title}</h3><p>${g.desc}</p><button class="btn softbtn" style="width:100%;font-size:12px" onclick="playGame(${i})">${state.games.includes(i)?"أُنجز التحدي ✓":"ابدئي التحدي"}</button></div>`).join("")}
+function playGame(i){
+ if(state.done.length<5){document.getElementById("gameArea").className="gamearea show";document.getElementById("gameArea").innerHTML='<div class="panel">تُفتح التحديات بعد اجتياز المحطات الخمس. بقي لكِ '+(5-state.done.length)+' محطة.</div>';return}
+ if(state.games.includes(i)){document.getElementById("gameArea").className="gamearea show";document.getElementById("gameArea").innerHTML='<div class="panel">أحسنتِ! أنجزتِ هذا التحدي وحصلتِ على نقاطه.</div>';return}
+ gameIndex=i;gameProgress[i]=0;renderGameStep(i);document.getElementById("gameArea").scrollIntoView({behavior:"smooth",block:"center"})
+}
+function renderGameStep(i){
+ const g=games[i],step=gameProgress[i],area=document.getElementById("gameArea");
+ const labels=g.kind==="maze"?["مدخل المتاهة","مفترق الطرق","بوابة الخروج"]:g.kind==="race"?["خط البداية","منتصف السباق","خط النهاية"]:["المحطة الأولى","المحطة الثانية","الكنز"];
+ const art=g.kind==="maze"?"🧱　⬜　🧱　⬜　🧱":g.kind==="race"?"🏃🏻‍♀️　🏁　🏃🏻‍♀️　🏁":"🌴　🗺️　⛰️　💎";
+ area.className="gamearea show";
+ area.innerHTML=`<div class="gamebox game-${g.kind}"><div class="game-scene">${art}</div><div class="game-meta">${labels[step]} · ${step+1} من 3</div><div class="game-track"><i style="width:${step/3*100}%"></i></div><div style="font-size:27px">${g.icon}</div><h3>${g.title}</h3><p>${g.steps[step].q}</p><div class="game-options">${g.steps[step].opts.map((o,j)=>`<button onclick="answerGame(${i},${j},this)">${o}</button>`).join("")}</div><div id="gameResult" class="game-result"></div><button class="btn light" onclick="document.getElementById('gameArea').className='gamearea'">إغلاق التحدي</button></div>`;
+}
+function answerGame(i,j,btn){
+ const g=games[i],step=gameProgress[i],res=document.getElementById("gameResult");
+ if(j===g.steps[step].a){
+  res.textContent="ممتاز! "+g.steps[step].why;
+  document.querySelectorAll(".game-options button").forEach(b=>b.disabled=true);
+  gameProgress[i]++;
+  if(gameProgress[i]===3){
+   state.games.push(i);state.points+=20;persist();renderGames();
+   res.textContent="رائع! أنهيتِ التحدي كاملًا وحصلتِ على 20 نقطة.";
+   const box=document.querySelector("#gameArea .gamebox");
+   box.insertAdjacentHTML("beforeend",'<div class="treasure-win">✨ أحسنتِ! التحدي مكتمل ✨</div>');
+  }else{
+   const next=document.createElement("button");next.className="btn primary";next.textContent="تابعي إلى المرحلة التالية";next.onclick=()=>renderGameStep(i);res.after(next);
+  }
+ }else{
+  btn.classList.add("wrong");res.textContent="هذا المسار غير صحيح. جرّبي اختيارًا آخر للوصول للمرحلة التالية."
+ }
+}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
+function init(){if(state.profile){document.getElementById("trainee").value=state.profile.name||"";document.getElementById("specialty").value=state.profile.specialty||"";document.getElementById("stage").value=state.profile.stage||""}renderStations();renderGames();updateProgress()}
+init();
+</script>
+</body></html>

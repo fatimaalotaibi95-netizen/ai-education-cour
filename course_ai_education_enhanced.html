@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>دورة الذكاء الاصطناعي في التعليم</title>
+<style>
+:root{--navy:#18334a;--teal:#247c78;--gold:#c49a4a;--bg:#f5f7f7;--ink:#243746}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.85}
+header{background:linear-gradient(120deg,#18334a,#247c78);color:white;padding:28px 18px;text-align:center}
+header h1{margin:4px 0;font-size:clamp(24px,4vw,38px)}header p{margin:4px}
+main{max-width:980px;margin:22px auto;padding:0 14px}.card{background:white;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 5px 20px #18334a12}
+h2{color:var(--navy);margin-top:0}h3{color:var(--teal)}.muted{color:#637582}
+input,select{font:inherit;padding:11px;border:1px solid #cbd5da;border-radius:9px;width:100%;margin:5px 0 12px}
+button{font:inherit;border:0;border-radius:10px;padding:11px 18px;background:var(--teal);color:white;cursor:pointer;margin:5px}
+button:disabled{opacity:.45;cursor:not-allowed}.print-tools{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.print-tools button{margin:0}.secondary{background:#e8eff0;color:var(--navy)}.gold{background:var(--gold)}
+.station{border:1px solid #e1e8e8;border-radius:14px;padding:16px;margin:12px 0}.station.locked{opacity:.5}
+.question{padding:13px;background:#f6f9f9;border-radius:12px;margin:12px 0}.option{display:block;background:white;border:1px solid #d4dfe1;color:var(--ink);text-align:right;width:100%}.option.selected{border:2px solid var(--teal);background:#eaf5f3}
+.feedback{font-weight:bold;margin-top:8px}.progress{height:12px;background:#e6ecec;border-radius:20px;overflow:hidden}.bar{height:100%;background:var(--teal);width:0}
+.hidden{display:none}.certificate{border:8px double var(--gold);padding:28px;text-align:center;background:#fffdf7}.certificate h1{color:var(--navy);font-size:32px}.certificate .name{font-size:25px;color:var(--teal);border-bottom:1px solid #aaa;display:inline-block;min-width:240px;padding:8px}
+footer{text-align:center;color:#71818a;padding:24px}
+@media print{body{background:white}.no-print,header,main>.card:not(#certificateCard),footer{display:none!important}#certificateCard{display:block!important;box-shadow:none;margin:0}.certificate{min-height:90vh;display:flex;flex-direction:column;justify-content:center}}
+</style>
+</head>
+<body>
+<header><p>الابتدائية الرابعة بالحوية</p><h1>الذكاء الاصطناعي في التعليم</h1><p>رحلة تدريبية تفاعلية للمعلمات — تعلّم، تطبيق، وإبداع</p></header>
+<main>
+<section class="card" id="registration">
+<h2>مرحبًا بكِ في رحلتك التدريبية</h2>
+<p>سجّلي بياناتك للبدء. يُحفظ تقدمك على هذا الجهاز والمتصفح.</p>
+<label>الاسم الثلاثي</label><input id="teacherName" placeholder="اكتبي اسمك الثلاثي">
+<label>التخصص</label><input id="specialty" placeholder="مثال: الدراسات الاجتماعية">
+<label>المرحلة التعليمية</label><select id="stage"><option>ابتدائي</option><option>متوسط</option><option>ثانوي</option><option>رياض أطفال</option><option>أخرى</option></select>
+<div class="print-tools"><button class="secondary" onclick="printCourseContent()">🖨️ طباعة معلومات الدورة / حفظ PDF</button><button onclick="startCourse()">ابدئي الدورة</button></div>
+</section>
+<section class="card hidden" id="course">
+<div class="print-tools no-print"><button class="secondary" onclick="printCourseContent()">🖨️ طباعة معلومات الدورة / حفظ PDF</button></div><h2>لوحة تقدمك</h2><div class="progress"><div class="bar" id="progressBar"></div></div><p id="scoreLine">النقاط: 0 من 200</p>
+<div id="stations"></div>
+<div id="gamesArea" class="hidden"><h2>الألعاب الختامية</h2><p>أجيبي عن التحديات الخمسة. لكل لعبة 20 نقطة.</p><div id="games"></div></div>
+</section>
+<section class="card hidden" id="certificateCard">
+<div class="certificate">
+<p>المملكة العربية السعودية</p><h2>الابتدائية الرابعة بالحوية</h2><p>تقدم</p>
+<h1>شهادة اجتياز دورة تدريبية</h1><h2>الذكاء الاصطناعي في التعليم</h2>
+<p>تشهد الابتدائية الرابعة بالحوية بأن المعلمة</p><div class="name" id="certName"></div>
+<p>قد اجتازت متطلبات الدورة التدريبية وأتمّت محطاتها وأنشطتها وتحدياتها بنجاح.</p>
+<p>شكرًا لكِ على شغفكِ بالتعلّم، وحرصكِ على تطوير مهاراتكِ المهنية، ومواكبة التقنيات الحديثة، وتسخير المعرفة والابتكار لصناعة تجربة تعليمية أكثر إبداعًا وتميّزًا.</p>
+<p>مع أطيب الأمنيات لكِ بمزيد من العطاء والنجاح، وأن يكون علمكِ أثرًا متجددًا في مستقبل طالباتكِ.</p>
+<div style="display:flex;justify-content:space-between;margin-top:35px"><div>المعلمة المنفذة<br><b>فاطمة الثبيتي</b></div><div>مديرة المدرسة<br><b>غادة الشريف</b></div></div>
+<p id="certDate"></p>
+</div><div class="no-print" style="text-align:center"><button onclick="printCertificate()">طباعة / حفظ PDF</button><button class="secondary" onclick="openCertificatePage()">فتح الشهادة في صفحة مستقلة</button></div>
+</section>
+</main><footer>دورة تدريبية تفاعلية — الابتدائية الرابعة بالحوية</footer>
+<script>
+const stations=[
+{title:"المحطة الأولى: الفهم العميق للذكاء الاصطناعي",body:`<h3>من القواعد إلى النماذج التوليدية</h3><p>بدأت تطبيقات الذكاء الاصطناعي بأنظمة تعتمد على قواعد يكتبها الإنسان، ثم تطورت إلى التعلم الآلي الذي يستخلص الأنماط من البيانات، وبعده التعلم العميق الذي يستخدم شبكات عصبية متعددة الطبقات. أما الذكاء التوليدي فينتج محتوى جديدًا مثل النصوص والصور والصوت استنادًا إلى الأنماط التي تعلمها.</p><p><b>مصطلحات مهمة:</b> الذكاء الاصطناعي مجال واسع؛ التعلم الآلي جزء منه؛ والتعلم العميق أحد أساليب التعلم الآلي. معالجة اللغة الطبيعية تمكّن الأنظمة من التعامل مع اللغة البشرية.</p><p>تتعلم النماذج من أمثلة وبيانات أثناء التدريب، ثم تستخدم ما تعلمته عند الاستدلال لإنتاج إجابة. وقد تخطئ أو تختلق معلومة تبدو مقنعة؛ وتسمى هذه الظاهرة الهلوسة الرقمية. لذلك تتحقق المعلمة من الحقائق والمراجع قبل اعتماد الناتج.</p><p><b>في التعليم:</b> قبل الدرس لتوليد أفكار، وأثناءه لتبسيط المفاهيم وصناعة أمثلة، وبعده لبناء مراجعة وتحليل إجابات الطالبات. الأداة مساعد وليست بديلًا عن الحكم المهني للمعلمة.</p><p><b>تطبيق:</b> اطلبي شرح مفهوم علمي، ثم قارني الشرح بالكتاب ومصدر موثوق، وحددي معلومة تحتاج إلى تصحيح.</p>`,q:["ما الفرق الأدق بين التعلم الآلي والذكاء الاصطناعي؟","لماذا يجب التحقق من إجابات النموذج التوليدي؟"],a:[1,0],opts:[["التعلم الآلي مجال أوسع من الذكاء الاصطناعي","التعلم الآلي جزء من الذكاء الاصطناعي","هما مصطلحان متطابقان"],["لأن كل مخرجاته صحيحة","لأنه قد ينتج معلومات غير دقيقة تبدو مقنعة","لأنه لا يستطيع كتابة النصوص"]]},
+{title:"المحطة الثانية: هندسة الأوامر الذكية",body:`<h3>من طلب عام إلى توجيه احترافي</h3><p>الأمر (Prompt) هو التعليمات التي تقدمينها للأداة. جودة الناتج ترتبط بوضوح المهمة والسياق والجمهور والقيود وشكل المخرج.</p><p><b>بنية الأمر الجيد:</b> حددي الدور، ثم المهمة، ثم سياق الدرس والصف، ثم الجمهور، والقيود (الوقت والمستوى واللغة)، ثم شكل الناتج ومعايير الجودة.</p><p>مثال عام: «اكتبي أسئلة عن البيئة». مثال محسّن: «تصرفي كخبيرة مناهج للصف الرابع الابتدائي؛ أعدّي خمسة أسئلة متنوعة عن درس البيئة، متدرجة الصعوبة، بلغة عربية واضحة، مع مفتاح إجابة وارتباط كل سؤال بهدف تعلم».</p><p>يمكنك تقسيم المهمة إلى خطوات، وإضافة مثال للنمط المطلوب، ثم مراجعة الناتج وطلب تحسين محدد. لا تتوقعي نتيجة مثالية من أول محاولة؛ الحوار التكراري جزء من هندسة الأوامر.</p><p><b>تطبيق:</b> اكتبي أمرًا يتضمن الصف والدرس والهدف ونوع النشاط ومستوى الطالبات وشكل الناتج.</p>`,q:["أي أمر أكثر فاعلية؟","ما فائدة تقسيم المهمة إلى خطوات؟"],a:[1,2],opts:[["اكتبي شيئًا عن التاريخ","أعدّي نشاطًا للصف الرابع عن تاريخ شبه الجزيرة في 10 دقائق مع هدف وخطوات وتقويم","أعطني معلومات كثيرة"],["لإطالة المحادثة","لمنع الأداة من الإجابة","لتوضيح المطلوب وتحسين جودة الناتج"]]},
+{title:"المحطة الثالثة: تصميم التعليم والتقويم الذكي",body:`<h3>التقنية تخدم هدف التعلم</h3><p>ابدئي بهدف قابل للقياس، ثم اختاري النشاط والتقويم المناسبين له. لا تختاري أداة لمجرد أنها جذابة؛ اسألي: ما المهارة التي ستتعلمها الطالبة؟ وما الدليل الذي سيظهر تحققها؟</p><p>يساعد تصنيف بلوم في الانتقال من التذكر والفهم إلى التطبيق والتحليل والتقويم والإبداع. صممي أسئلة تقيس مستويات متنوعة، ولا تكتفي بأسئلة الاسترجاع.</p><p><b>التعليم المتمايز:</b> قدمي مهمة أساسية مبسطة، وأخرى متوسطة تتطلب تفسيرًا، وثالثة متقدمة تتطلب مقارنة أو ابتكارًا. استخدمي نتائج التقويم التكويني وتحليل الأخطاء لتقديم تغذية راجعة وخطة علاجية أو إثرائية.</p><p>يمكن للذكاء الاصطناعي اقتراح أوراق عمل ومهام أدائية وأسئلة، لكن المعلمة تراجع ملاءمتها ودقتها وعدالتها قبل استخدامها، ولا تفوض أحكامًا تربوية حساسة للأداة.</p><p><b>تطبيق:</b> صممي نشاطًا واحدًا بثلاثة مستويات، واربطِي كل مستوى بهدف ودليل تقويم.</p>`,q:["ما نقطة البداية الصحيحة عند تصميم نشاط مدعوم بالذكاء الاصطناعي؟","كيف تستفيد المعلمة من نتائج التقويم التكويني؟"],a:[0,1],opts:[["تحديد هدف تعلم قابل للقياس","اختيار أكثر أداة انتشارًا","زيادة عدد الأسئلة فقط"],["تجاهل الأخطاء","تحديد مواطن التعثر وتقديم تغذية راجعة وعلاج مناسب","إصدار حكم نهائي آلي على الطالبة"]]},
+{title:"المحطة الرابعة: مختبر الأدوات والتطبيقات الذكية",body:`<h3>اختاري الأداة وفق المهمة</h3><p>تتنوع الأدوات بين توليد النصوص والبحث، وتصميم الصور والعروض، ومعالجة الصوت والفيديو، وبناء الاختبارات والألعاب، وتحليل البيانات. لا توجد أداة واحدة هي الأفضل لكل المهام.</p><p><b>معايير الاختيار:</b> جودة دعم العربية، سهولة الاستخدام، الخصوصية، التكلفة، إمكان تصدير العمل، وإمكانية التكامل مع الأدوات المدرسية.</p><p>يمكن بناء سير عمل متكامل: أداة محادثة لتوليد مسودة، وأداة تصميم لإخراجها بصريًا، ومنصة اختبار لقياس الفهم، ثم تحليل النتائج لتحديد جوانب القوة والاحتياج.</p><p>راجعي شروط الاستخدام، ولا تدخلي بيانات الطالبات الشخصية في خدمات عامة. اختبري الناتج قبل مشاركته، وتأكدي من ملاءمته للمرحلة والعمر.</p><p><b>تطبيق:</b> اختاري أداة نصية لإعداد أسئلة، وأداة تصميم لإنشاء بطاقة تعليمية، وأداة تقويم لقياس الفهم، واكتبي سبب اختيار كل منها.</p>`,q:["ما المعيار الأهم عند اختيار أداة تعليمية؟","ما سير العمل الأكثر منطقية؟"],a:[2,1],opts:[["أن تكون مشهورة فقط","أن تحتوي أكبر عدد من المؤثرات","أن تناسب المهمة وتراعي العربية والخصوصية والتكلفة"],["نشر الناتج مباشرة دون مراجعة","توليد مسودة ثم تصميمها ومراجعتها وتقويم تعلم الطالبات","استخدام أداة واحدة لكل شيء"]]},
+{title:"المحطة الخامسة: الأمان والأخلاقيات والمسؤولية الرقمية",body:`<h3>ابتكار مسؤول يحمي الطالبة</h3><p>حماية البيانات مسؤولية أساسية. لا تدخلي أسماء الطالبات أو أرقام هوياتهن أو معلوماتهن الصحية أو صورهن في أدوات عامة دون تصريح وضوابط معتمدة. استخدمي بيانات مجهولة الهوية، واجمعي الحد الأدنى اللازم فقط.</p><p>تحققي من صحة المعلومات والمراجع، وانتبهي إلى التحيز الذي قد يظهر في المخرجات ويؤثر في الإنصاف. احترمي الملكية الفكرية والتراخيص، وانسبي الأعمال إلى أصحابها، وأفصحي عن استخدام الذكاء الاصطناعي عندما يكون ذلك مطلوبًا.</p><p>تبقى المعلمة صاحبة القرار التربوي: تراجع المحتوى، وتتحقق من مناسبته، وتحمي خصوصية الطالبات، وتضمن ألا يؤدي استخدام التقنية إلى تمييز أو ضرر.</p><p><b>تطبيق:</b> إذا أردتِ تحليل إجابات طالبات، أزيلي الأسماء والمعرفات، ولا ترفعي بيانات حساسة إلى خدمة غير معتمدة، ثم راجعي التحليل قبل اتخاذ أي قرار.</p>`,q:["ما التصرف الأكثر أمانًا عند تحليل أعمال الطالبات؟","من المسؤول عن اعتماد المحتوى المولد؟"],a:[1,0],opts:[["رفع الأسماء والدرجات والصور إلى أي أداة","إزالة المعرفات وتقليل البيانات واستخدام خدمة معتمدة","مشاركة الملف في حساب عام"],["المعلمة بعد التحقق والمراجعة","الأداة وحدها","الطالبة دون مراجعة"]]}
+];
+const games=[
+["عجلة المعرفة","أي ممارسة تساعد على تقليل الهلوسة الرقمية؟",["نسخ الإجابة مباشرة","التحقق من المعلومات بمصدر موثوق","زيادة طول الأمر"],1],
+["اكتشفي الخطأ","أمر يقول: «اكتبي أي شيء عن العلوم». ما أبرز عيوبه؟",["لا يحدد الصف أو الهدف أو شكل الناتج","يحدد الجمهور بدقة","يتضمن معايير الجودة"],0],
+["اختاري الأداة","تريدين تصميم بطاقة مصورة لدرس. ما نوع الأداة الأنسب؟",["أداة تصميم وتوليد صور مناسبة","حاسبة فقط","جدول بيانات فقط"],0],
+["المهمة السرية","قبل استخدام بيانات الطالبات في أداة عامة، ماذا تفعلين؟",["ترفعينها كما هي","تخفين المعرفات وتتحققين من اعتماد الأداة والضوابط","ترسلينها في مجموعة عامة"],1],
+["الكنز الذهبي","ما المبدأ الذي يحكم استخدام الذكاء الاصطناعي في التعليم؟",["استبدال دور المعلمة","الاعتماد على الناتج دون مراجعة","توظيف مسؤول يخدم هدف التعلم مع بقاء القرار للمعلمة"],2]
+];
+let state={name:"",specialty:"",stage:"",station:0,stationScores:[0,0,0,0,0],gameScores:[0,0,0,0,0],done:[],gamesDone:[]};
+function save(){localStorage.setItem("aiCourseTaif",JSON.stringify(state));renderScore()}
+function load(){try{let x=JSON.parse(localStorage.getItem("aiCourseTaif"));if(x)state=x}catch(e){}}
+function startCourse(){let n=document.getElementById("teacherName").value.trim();if(n.split(/\s+/).length<3){alert("فضلاً اكتبي الاسم الثلاثي.");return}state.name=n;state.specialty=document.getElementById("specialty").value;state.stage=document.getElementById("stage").value;save();document.getElementById("registration").classList.add("hidden");document.getElementById("course").classList.remove("hidden");render()}
+function renderScore(){let total=state.stationScores.reduce((a,b)=>a+b,0)+state.gameScores.reduce((a,b)=>a+b,0);let done=state.done.length+state.gamesDone.length;document.getElementById("scoreLine").textContent=`النقاط: ${total} من 200 — المكتمل: ${done} من 10`;document.getElementById("progressBar").style.width=(done*10)+"%"}
+function render(){let root=document.getElementById("stations");root.innerHTML="";stations.forEach((s,i)=>{let d=document.createElement("div");d.className="station"+(i>state.done.length?" locked":"");d.innerHTML=`<h3>${s.title}</h3>${s.body}<div id="sq${i}"></div>`;root.appendChild(d);if(i===state.done.length){s.q.forEach((q,j)=>{let el=document.createElement("div");el.className="question";el.innerHTML=`<b>${j+1}. ${q}</b>`+s.opts[j].map((o,k)=>`<button class="option" onclick="chooseStation(${i},${j},${k},this)">${o}</button>`).join("")+`<div class="feedback" id="sf${i}${j}"></div>`;d.querySelector(`#sq${i}`).appendChild(el)});let b=document.createElement("button");b.textContent="اعتماد إجابات المحطة";b.onclick=()=>finishStation(i);d.appendChild(b)}else if(state.done.includes(i)){d.insertAdjacentHTML("beforeend",`<p class="feedback">اجتزتِ المحطة — ${state.stationScores[i]} نقطة</p>`)} });if(state.done.length===5){document.getElementById("gamesArea").classList.remove("hidden");renderGames()}renderScore()}
+let answers={};
+function chooseStation(i,j,k,btn){answers[`s${i}_${j}`]=k;btn.parentElement.querySelectorAll("button").forEach(x=>x.classList.remove("selected"));btn.classList.add("selected")}
+function finishStation(i){let s=stations[i];let correct=0;for(let j=0;j<s.q.length;j++){let v=answers[`s${i}_${j}`];let f=document.getElementById(`sf${i}${j}`);if(v===undefined){alert("جاوبي عن جميع الأسئلة أولًا.");return}if(v===s.a[j]){correct++;f.textContent="إجابة صحيحة، أحسنتِ!";f.style.color="green"}else{f.textContent="الإجابة غير صحيحة. راجعي الشرح ثم أعيدي المحاولة.";f.style.color="#b34b42"}}if(correct===s.q.length){state.done.push(i);state.stationScores[i]=20;save();render();}else{alert("لم تجتازي المحطة بعد. راجعي التغذية الراجعة وأعيدي المحاولة.");}}
+function renderGames(){let root=document.getElementById("games");root.innerHTML="";games.forEach((g,i)=>{let d=document.createElement("div");d.className="station";d.innerHTML=`<h3>${g[0]} — 20 نقطة</h3><p>${g[1]}</p>`+g[2].map((o,k)=>`<button class="option" onclick="playGame(${i},${k},this)">${o}</button>`).join("")+`<div class="feedback" id="gf${i}"></div>`;if(state.gamesDone.includes(i))d.insertAdjacentHTML("beforeend",'<p class="feedback">تم اجتياز اللعبة — 20 نقطة</p>');root.appendChild(d)})}
+function playGame(i,k,btn){if(state.gamesDone.includes(i))return;let g=games[i],f=document.getElementById("gf"+i);if(k===g[3]){state.gamesDone.push(i);state.gameScores[i]=20;f.textContent="إجابة صحيحة! حصلتِ على 20 نقطة.";f.style.color="green";btn.parentElement.querySelectorAll("button").forEach(x=>x.disabled=true);save();if(state.gamesDone.length===5&&state.gameScores.reduce((a,b)=>a+b,0)>=80)showCertificate()}else{f.textContent="حاولي مرة أخرى، وفكري في مبادئ المحطات.";f.style.color="#b34b42"}}
+function showCertificate(){let total=state.stationScores.reduce((a,b)=>a+b,0)+state.gameScores.reduce((a,b)=>a+b,0);if(total<80){alert("يلزم الحصول على 80 نقطة على الأقل.");return}document.getElementById("certificateCard").classList.remove("hidden");document.getElementById("certName").textContent=state.name;document.getElementById("certDate").textContent="تاريخ الإصدار: "+new Date().toLocaleDateString("ar-SA");document.getElementById("certificateCard").scrollIntoView({behavior:"smooth"})}
+
+function escapePrintText(value){return String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function printCourseContent(){
+  const stationHtml=stations.map((s,i)=>`<section class="unit"><h2>${escapePrintText(s.title)}</h2><div>${s.body}</div><h3>أسئلة التحقق</h3>${s.q.map((q,j)=>`<div class="q"><b>${j+1}. ${escapePrintText(q)}</b><ol>${s.opts[j].map((o,k)=>`<li>${escapePrintText(o)}${k===s.a[j]?' — الإجابة الصحيحة':''}</li>`).join('')}</ol></div>`).join('')}</section>`).join('');
+  const gamesHtml=games.map((g,i)=>`<section class="unit"><h2>اللعبة ${i+1}: ${escapePrintText(g[0])}</h2><p>${escapePrintText(g[1])}</p><ol>${g[2].map((o,k)=>`<li>${escapePrintText(o)}${k===g[3]?' — الإجابة الصحيحة':''}</li>`).join('')}</ol><p class="points">20 نقطة</p></section>`).join('');
+  const html=`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>محتوى دورة الذكاء الاصطناعي في التعليم</title><style>body{font-family:Tahoma,Arial,sans-serif;color:#243746;line-height:1.9;margin:0;padding:22px;background:#fff}header{text-align:center;background:#18334a;color:white;padding:22px;border-radius:12px}h1{margin:5px}h2{color:#18334a;border-bottom:2px solid #c49a4a;padding-bottom:7px}.unit{border:1px solid #d9e1e3;border-radius:12px;padding:18px;margin:18px 0;break-inside:avoid}.unit h3{color:#247c78}.q{background:#f5f7f7;padding:10px;border-radius:8px;margin:10px 0}.points{color:#247c78;font-weight:bold}.actions{text-align:center;margin:18px}.actions button{font:inherit;padding:12px 22px;background:#247c78;color:white;border:0;border-radius:9px}@media print{.actions{display:none}body{padding:0}header,.unit{break-inside:avoid}}</style></head><body><div class="actions"><button onclick="window.print()">طباعة / حفظ PDF</button><p>على الآيفون: من نافذة الطباعة اختاري مشاركة ثم حفظ في الملفات بصيغة PDF.</p></div><header><p>الابتدائية الرابعة بالحوية</p><h1>الذكاء الاصطناعي في التعليم</h1><p>المحتوى العلمي والمحطات والألعاب التدريبية</p></header><h2>المحطات التدريبية الخمس</h2>${stationHtml}<h2>الألعاب التفاعلية الخمس</h2>${gamesHtml}<footer>الابتدائية الرابعة بالحوية — دورة الذكاء الاصطناعي في التعليم</footer></body></html>`;
+  const w=window.open('','_blank');
+  if(w){w.document.open();w.document.write(html);w.document.close();}
+  else{const blob=new Blob([html],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.target='_blank';a.click();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+}
+
+function printCertificate(){
+  const card=document.getElementById("certificateCard");
+  if(card.classList.contains("hidden")){alert("أكملي متطلبات الدورة أولاً لإصدار الشهادة.");return;}
+  try{window.focus();window.print();}catch(e){openCertificatePage();}
+}
+function openCertificatePage(){
+  const cert=document.querySelector("#certificateCard .certificate");
+  if(!cert){alert("أكملي متطلبات الدورة أولاً لإصدار الشهادة.");return;}
+  const html='<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>شهادة اجتياز الدورة</title><style>body{font-family:Tahoma,Arial,sans-serif;padding:20px;background:#fff;color:#243746;line-height:1.9}.certificate{border:8px double #c49a4a;padding:28px;text-align:center;background:#fffdf7;max-width:900px;margin:auto}.certificate h1{color:#18334a;font-size:32px}.certificate .name{font-size:25px;color:#247c78;border-bottom:1px solid #aaa;display:inline-block;min-width:240px;padding:8px}.actions{text-align:center;margin:18px}.actions button{font:inherit;padding:12px 22px;background:#247c78;color:white;border:0;border-radius:9px}@media print{.actions{display:none}body{padding:0}.certificate{min-height:90vh;display:flex;flex-direction:column;justify-content:center}}</style></head><body><div class="actions"><button onclick="window.print()">طباعة الشهادة / حفظ PDF</button><p>إذا لم تظهر الطباعة، افتحي هذه الصفحة في Safari ثم مشاركة ← طباعة.</p></div>'+cert.outerHTML+'</body></html>';
+  const blob=new Blob([html],{type:"text/html;charset=utf-8"});const url=URL.createObjectURL(blob);const w=window.open(url,"_blank");if(!w){const a=document.createElement("a");a.href=url;a.target="_blank";a.click();}setTimeout(()=>URL.revokeObjectURL(url),60000);
+}
+
+load();if(state.name){document.getElementById("teacherName").value=state.name;document.getElementById("specialty").value=state.specialty;document.getElementById("stage").value=state.stage;startCourse();if(state.done.length===5)showCertificate()}
+</script>
+</body></html>
